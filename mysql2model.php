@@ -64,9 +64,6 @@ foreach ($arrData as $key => $value) {
 	array_push($arrColumn, $column);
 }
 
-//print_r($arrColumn);
-//exit();
-
 foreach ($arrColumn as $key => $value) {
 	echo "&nbsp; &nbsp; protected \$_".trim($value).";<br>";
 }
@@ -79,7 +76,7 @@ foreach ($arrColumn as $key => $value) {
 	 $newName = "";
 
   foreach ($name as $val) {
-		    $newName .= ucfirst(trim($val));
+    $newName .= ucfirst(trim($val));
 	}
 
 	echo '&nbsp; &nbsp; public function get'.$newName.'() {<br>';
@@ -90,6 +87,51 @@ foreach ($arrColumn as $key => $value) {
 	echo '&nbsp; &nbsp; &nbsp; &nbsp; $this->_'.trim($value).'=$value;<br>';
 	echo '&nbsp; &nbsp; }<br><br>';
 
+
 }
+
+echo "<br><br>----------------------<br><br>";
+
+
+foreach ($arrColumn as $key => $value) {
+  $name = explode("_", $value);
+  // new Function Name
+   $newName = "";
+
+   //function name
+  foreach ($name as $val) {
+    $newName .= ucfirst(trim($val));
+  }
+  echo '$entry->set'.$newName.'($row->'.trim($value).');<br>';
+}
+
+echo "<br><br>----------------------<br><br>";
+
+foreach ($arrColumn as $key => $value) {
+  $name = explode("_", $value);
+  // new Function Name
+   $newName = "";
+
+   //function name
+  foreach ($name as $val) {
+    $newName .= ucfirst(trim($val));
+  }
+  echo "'".trim($value)."' => \$obj->get".$newName."(),<br>";
+}
+
+echo "<br><br>----------------------<br><br>";
+
+foreach ($arrColumn as $key => $value) {
+  $name = explode("_", $value);
+  // new Function Name
+   $newName = "";
+
+   //function name
+  foreach ($name as $val) {
+    $newName .= ucfirst(trim($val));
+  }
+  echo "\$obj->set".$newName."(\$row->".trim($value).");<br>";
+}
+
 
 ?>
