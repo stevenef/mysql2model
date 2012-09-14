@@ -53,8 +53,7 @@ $sql = "
   `z_tv` tinyint(4) DEFAULT NULL,
   `sonstiges` text,
   `geaendert_von` int(11) NOT NULL COMMENT 'geändert von',
-  `geaendert_am` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'geändert am',
-";
+  `geaendert_am` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'geändert am'";
 
 $arrData = explode(',', $sql);
 
@@ -69,9 +68,10 @@ foreach ($arrData as $key => $value) {
 //exit();
 
 foreach ($arrColumn as $key => $value) {
-	echo "protected \$_".$value.";<br>";
+	echo "&nbsp; &nbsp; protected \$_".trim($value).";<br>";
 }
 
+echo "<br>";
 
 foreach ($arrColumn as $key => $value) {
 	$name = explode("_", $value);
@@ -82,13 +82,13 @@ foreach ($arrColumn as $key => $value) {
 		    $newName .= ucfirst(trim($val));
 	}
 
-	echo 'public function get'.$newName.'() {<br>';
-	echo 'return $this->_'.$value.';<br>';
-	echo '}<br>';
+	echo '&nbsp; &nbsp; public function get'.$newName.'() {<br>';
+	echo '&nbsp; &nbsp; &nbsp; &nbsp; return $this->_'.trim($value).';<br>';
+	echo '&nbsp; &nbsp; }<br>';
 
-	echo 'public function set'.$newName.'($value) {<br>';
-	echo 'return $this->_'.$value.'=$value;<br>';
-	echo '}<br><br>';
+	echo '&nbsp; &nbsp; public function set'.$newName.'($value) {<br>';
+	echo '&nbsp; &nbsp; &nbsp; &nbsp; $this->_'.trim($value).'=$value;<br>';
+	echo '&nbsp; &nbsp; }<br><br>';
 
 }
 
