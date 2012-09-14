@@ -77,10 +77,11 @@ foreach ($arrColumn as $key => $value) {
 	$name = explode("_", $value);
 	// new Function Name
 	 $newName = "";
-	for ($i=0; $i<count($name); $i++) {
-		$newName .= ucfirst($name[$i]);
+
+  foreach ($name as $val) {
+		    $newName .= ucfirst(trim($val));
 	}
-	
+
 	echo 'public function get'.$newName.'() {<br>';
 	echo 'return $this->_'.$value.';<br>';
 	echo '}<br>';
